@@ -1,0 +1,423 @@
+📚 Master Basic Data Structures (Full Clear Explanation)
+
+1. 📦 Arrays
+
+➔ Definition:
+
+Array is a fixed-size collection of elements of the same type, stored contiguously in memory.
+
+Each element can be accessed directly by its index (starting from 0).
+
+➔ Properties:
+Size is fixed at the time of creation.
+
+Fast access: O(1) time to access any element.
+
+Insertion/deletion is costly (you might have to shift elements).
+
+➔ Example (Java):
+java
+
+int[] arr = {1, 2, 3, 4, 5};
+System.out.println(arr[2]); // Output: 3
+
+➔ Real-Time Example:
+Student marks stored in an array.
+
+Leaderboard scores stored as arrays.
+
+Colors in an image stored as pixel arrays.
+
+2. 📄 Strings
+➔ Definition:
+String is a sequence of characters.
+
+In many languages like Java, a String is internally an array of characters.
+
+➔ Properties:
+Immutable in languages like Java (once created, cannot be changed).
+
+Can be concatenated, compared, sliced, etc.
+
+➔ Example (Java):
+java
+
+
+String s = "Hello World";
+System.out.println(s.charAt(1)); // Output: e
+
+➔ Real-Time Example:
+Usernames, Passwords are stored as strings.
+
+Chat messages in WhatsApp are strings.
+
+URLs in browsers are strings.
+
+3. 🔗 Linked List (Singly)
+➔ Definition:
+Singly Linked List is a sequence of nodes where each node points to the next node.
+
+It does not point backward.
+
+➔ Properties:
+Dynamic size.
+
+Insertion and deletion are faster (O(1)) compared to arrays for certain cases (no shifting).
+
+No direct access (must traverse to find a node).
+
+➔ Node Structure:
+java
+
+class Node {
+    int data;
+    Node next;
+}
+➔ Example:
+java
+
+Node head = new Node();
+head.data = 10;
+head.next = new Node();
+head.next.data = 20;
+
+➔ Real-Time Example:
+Browser history (forward and backward traversal).
+
+Music playlist (next song).
+
+Low-memory embedded devices where you want efficient insertion/deletion.
+
+4. 🔗🔙 Linked List (Doubly)
+➔ Definition:
+Doubly Linked List is a sequence of nodes where each node points to both the next and the previous node.
+
+➔ Properties:
+Can traverse both forward and backward.
+
+Requires extra space for the extra pointer (prev).
+
+➔ Node Structure:
+java
+
+class Node {
+    int data;
+    Node next;
+    Node prev;
+}
+➔ Example:
+java
+
+Node head = new Node();
+head.data = 10;
+head.next = new Node();
+head.next.data = 20;
+head.next.prev = head;
+➔ Real-Time Example:
+Undo and Redo in software (Word, Photoshop).
+
+Music player next/previous song navigation.
+
+Doubly linked tabs in browsers.
+
+5. 🥞 Stacks
+➔ Definition:
+Stack is a linear data structure that follows Last In, First Out (LIFO) order.
+
+The last element inserted is the first one to be removed.
+
+➔ Properties:
+Operations: push (insert), pop (remove), peek (view top element).
+
+Used in recursion, backtracking, etc.
+
+➔ Example (Java using Stack class):
+java
+
+import java.util.Stack;
+Stack<Integer> stack = new Stack<>();
+stack.push(10);
+stack.push(20);
+System.out.println(stack.pop()); // Output: 20
+➔ Real-Time Example:
+Undo operations (word editors).
+
+Back button in browsers.
+
+Syntax parsing (compilers check {}, (), []).
+
+6. 🚎 Queues
+➔ Definition:
+Queue is a linear data structure that follows First In, First Out (FIFO) order.
+
+The first element inserted is the first one to be removed.
+
+➔ Properties:
+Operations: enqueue (insert at rear), dequeue (remove from front).
+
+➔ Example (Java using Queue interface):
+
+Edit
+import java.util.LinkedList;
+import java.util.Queue;
+
+Queue<Integer> queue = new LinkedList<>();
+queue.add(10);
+queue.add(20);
+System.out.println(queue.remove()); // Output: 10
+➔ Real-Time Example:
+Printer queue.
+
+Customer service queues.
+
+CPU process scheduling.
+
+📘 Deep View: How These Data Structures Compare
+Feature	Array	String	Linked List	Stack	Queue
+Access	O(1)	O(1)	O(n)	O(n)	O(n)
+Insert/Delete	Costly	Costly	Easy	Top Only	Ends Only
+Dynamic Size	❌ (fixed)	✅ (some languages)	✅	✅	✅
+Example	Scores list	Message	Music playlist	Undo	Print job
+
+🔥 Visualization of Each Data Structure:
+Data Structure	Visual
+Array     	                       [1] → [2] → [3] → [4]
+String                          	'H' 'e' 'l' 'l' 'o'
+Singly Linked List               	[10
+Doubly Linked List	              null ← [10] ↔ [20] ↔ [30] → null
+Stack	                            Bottom → 10 → 20 → 30 → Top
+Queue                            	Front → 10 → 20 → 30 → Rear
+
+📢 Final Short Definitions:
+Array: Fixed-size list.
+
+String: Sequence of characters.
+
+Singly Linked List: Chain of nodes (forward only).
+
+Doubly Linked List: Chain of nodes (both ways).
+
+Stack: LIFO, last in, first out.
+
+Queue: FIFO, first in, first out.
+
+
+
+
+
+📦 1. Array - Find Maximum Element
+➔ Solution (Java):
+java
+Copy
+Edit
+int[] arr = {2, 7, 3, 9, 5};
+int max = arr[0];
+for (int i = 1; i < arr.length; i++) {
+    if (arr[i] > max) {
+        max = arr[i];
+    }
+}
+System.out.println("Maximum Element: " + max);
+➔ Dry Run:
+Initial max = 2
+
+Compare with 7 → max = 7
+
+Compare with 3 → no change
+
+Compare with 9 → max = 9
+
+Compare with 5 → no change
+
+Final Max = 9
+
+➔ Time Complexity:
+O(n) → One pass through array.
+
+➔ Space Complexity:
+O(1) → Only a variable for max.
+
+📄 2. String - Check Palindrome
+➔ Solution (Java):
+java
+Copy
+Edit
+String s = "racecar";
+boolean isPalindrome = true;
+int start = 0, end = s.length() - 1;
+while (start < end) {
+    if (s.charAt(start) != s.charAt(end)) {
+        isPalindrome = false;
+        break;
+    }
+    start++;
+    end--;
+}
+System.out.println("Is Palindrome: " + isPalindrome);
+➔ Dry Run:
+'r' == 'r' ✅
+
+'a' == 'a' ✅
+
+'c' == 'c' ✅
+
+Center reached → Palindrome ✅
+
+➔ Time Complexity:
+O(n) → Traverses only half of the string.
+
+➔ Space Complexity:
+O(1) → Only few variables.
+
+🔗 3. Singly Linked List - Print All Elements
+➔ Solution (Java):
+java
+Copy
+Edit
+class Node {
+    int data;
+    Node next;
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+Node head = new Node(10);
+head.next = new Node(20);
+head.next.next = new Node(30);
+
+// Traversal
+Node temp = head;
+while (temp != null) {
+    System.out.print(temp.data + " ");
+    temp = temp.next;
+}
+➔ Dry Run:
+Print 10
+
+Move to next → Print 20
+
+Move to next → Print 30
+
+Output: 10 20 30
+
+➔ Time Complexity:
+O(n) → Traverse each node once.
+
+➔ Space Complexity:
+O(1) → No extra space, just a temp pointer.
+
+🔗🔙 4. Doubly Linked List - Print in Reverse
+➔ Solution (Java):
+java
+
+class Node {
+    int data;
+    Node next, prev;
+    Node(int data) {
+        this.data = data;
+        this.next = this.prev = null;
+    }
+}
+
+Node head = new Node(10);
+Node second = new Node(20);
+Node third = new Node(30);
+head.next = second;
+second.prev = head;
+second.next = third;
+third.prev = second;
+
+// Move to last node
+Node temp = head;
+while (temp.next != null) {
+    temp = temp.next;
+}
+
+// Traverse backward
+while (temp != null) {
+    System.out.print(temp.data + " ");
+    temp = temp.prev;
+}
+➔ Dry Run:
+Move to 30
+
+Print 30
+
+Move to 20 → Print 20
+
+Move to 10 → Print 10
+
+Output: 30 20 10
+
+➔ Time Complexity:
+O(n) → Traverse each node once.
+
+➔ Space Complexity:
+O(1) → No extra space.
+
+🥞 5. Stack - Print Top Element
+➔ Solution (Java):
+java
+
+import java.util.Stack;
+Stack<Integer> stack = new Stack<>();
+stack.push(5);
+stack.push(10);
+stack.push(15);
+System.out.println("Top Element: " + stack.peek());
+➔ Dry Run:
+Push 5
+
+Push 10
+
+Push 15
+
+Peek → 15
+
+Output: Top Element: 15
+
+➔ Time Complexity:
+O(1) → Push, pop, peek operations in Stack are O(1).
+
+➔ Space Complexity:
+O(n) → Stack holds all elements.
+
+🚎 6. Queue - Print Front Element
+➔ Solution (Java):
+java
+
+import java.util.LinkedList;
+import java.util.Queue;
+Queue<Integer> queue = new LinkedList<>();
+queue.add(1);
+queue.add(2);
+queue.add(3);
+System.out.println("Front Element: " + queue.peek());
+➔ Dry Run:
+Enqueue 1
+
+Enqueue 2
+
+Enqueue 3
+
+Peek → 1
+
+Output: Front Element: 1
+
+➔ Time Complexity:
+O(1) → Enqueue and peek operations.
+
+➔ Space Complexity:
+O(n) → Queue holds all elements.
+
+🏆 Summary Table
+Problem	Time Complexity	Space Complexity
+Max in Array	O(n)	O(1)
+Palindrome String	O(n)	O(1)
+Print Linked List	O(n)	O(1)
+Reverse Doubly List	O(n)	O(1)
+Stack Top Element	O(1)	O(n)
+Queue Front Element	O(1)	O(n)
+
